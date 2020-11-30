@@ -58,3 +58,27 @@ git cherry-pick <commit1> <commit2> : Copies a series of commits below my curren
 
 git rebase -i HEAD~<num of layers>: Interactive rebase. Opens the VIM UI to show which commits to copy. 
 pick: In rebase -i, we can pick off (omit) certain commits
+
+
+### Pull from Remote Repositories
+git -fetch: Does 2 things. 
+1. Downloads the commits that the local repo is missing that the remote repo has
+2. Updates where our remote branches point (eg origin/master)
+IE: It syncs our local repo with the remote repo, by downloading the deltas when comparing remote and local repo.
+BUT: It does **not** change the local state. Just merely downloads the differences. To change local state, we still need to manually merge/rebase.
+
+git -pull: A shortcut to above. First fetches o/master and merges it with my master. It does those two directly with our master and origin/master
+
+### Pushing to Remote Repositories
+git -push: Pushes our work up to the remote repo
+
+What if there is diverging history?
+Assume that you pulled work down on monday, made some changes, and was ready to push it on friday. But your teamworks made some changes and now your previous history is outdated and there is a *diverged history* between your local repo and the remote repo. Git doesn't allow us to push the work up till we have a similar ancestor as that in the remote repo (ie: my local commits = the remote commits), or reverting the remote till it becomes Monday's version (rare, cause you'll be deleting all your friends' work)
+
+git fetch; git rebase o/master; git push
+To solve it, we first fetch the latest friday version to update our work, we then rebase our solo work on top of the o/master branch, then we push it. 
+
+Or Shortcut: git pull --rebase
+
+git pull; git push: Or we could use merge instead of rebase. Which will have our copy up to the remote repo.
+
