@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Test</title>
+        <script src="counter.js"></script>
+        <script src="hello.js"></script>\
+        <script src="button-color.js"></script>
+    </head>
+    <body>
+        <hr>
+        <h1 id='number'>0</h1>
+        <button id="counter">Count</button>
+        <hr>
+        <form>
+            <input type="text" autofocus id='name' placeholder="Name">
+            <input type="submit">
+        </form>
+        <hr>
+        <h2 id="hello">Hello</h2>
+        <button id="button" data-color="red">Red</button>
+        <button id="button" data-color="blue">Blue</button>
+        <button id="button" data-color="green">Green</button>
+        <script>document.getElementById('hello').innerHTML='ByeBye'</script> 
+        <hr>
+        <h3 id='test'>Test</h3>
+        <button onclick="document.getElementById('test').innerHTML=Date()">
+        You can directly insert javascript & CSS in elements!</button>
+    </body>
+</html>
